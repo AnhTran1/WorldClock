@@ -7,21 +7,39 @@
 //
 
 #import "AlarmTableViewController.h"
+#import "AlarmObject.h"
+#import "AddAlarmTableViewController.h"
 
 @interface AlarmTableViewController ()
+
+- (IBAction)editButton:(id)sender;
+@property NSMutableArray *listOfAlarms;
 
 @end
 
 @implementation AlarmTableViewController
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue{
+    AddAlarmTableViewController *source = [segue sourceViewController];
+    AlarmObject *item = source.alarmObject;
+    if (item != nil) {
+        [self.listOfAlarms addObject:item];
+        [self.tableView reloadData];
+    }
+}
 
+- (void)loadInitialData {
+    AlarmObject *item1 = [[AlarmObject alloc] init];
+    item1.label = @"wakeup";
+    item1.timeToSetOff = [NSDate date];
+    [self.listOfAlarms addObject:item1];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.listOfAlarms = [[NSMutableArray alloc]init];
+//    [self loadInitialData];
+//    NSLog(@"%@",self.listOfAlarms);
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,29 +47,58 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)editButton:(id)sender{
+    [self setEditing: !self.editing animated:YES];
+    if ([self.tableView isEditing]) {
+        self.editButtonItem.title = @"Done";
+    }else {
+        self.editButtonItem.title = @"Edit";
+    }
+
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [self.listOfAlarms count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+
+    NSDateFormatter *dateReader = [[NSDateFormatter alloc]init];
+    [dateReader setDateFormat:@"hh:mm a"];
+    AlarmObject *alarmObject = [self.listOfAlarms objectAtIndex:indexPath.row];
+    NSString *date = [dateReader stringFromDate:alarmObject.timeToSetOff];
     
-    // Configure the cell...
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if(cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        
+    }
+    
+    cell.textLabel.text = date;
+    cell.detailTextLabel.text = alarmObject.label;
+  
     
     return cell;
 }
-*/
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated{
+    [super setEditing:editing animated:animated];
+    if ([self.tableView isEditing]) {
+        self.editButtonItem.title = @"Done";
+    }else {
+        self.editButtonItem.title = @"Edit";
+    }
+}
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -86,8 +133,32 @@
     return YES;
 }
 */
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.listOfAlarms removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:indexPath] withRowAnimation:YES];
+        [tableView reloadData];
+    }
+}
+#pragma mark - UITableView Delegate
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewCellEditingStyleDelete;
+}
 
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self performSegueWithIdentifier:@"EditSergue" sender:self];
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([[segue identifier] isEqualToString:@"EditSergue"]) {
+        AddAlarmTableViewController *controller = (AddAlarmTableViewController *)segue.destinationViewController;
+        controller.indexOfAlarmToEdit = [[self.tableView indexPathForSelectedRow]row];
+        controller.listOfAlarm = self.listOfAlarms;
+        controller.editing = YES;
+    }
+}
 /*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -96,5 +167,4 @@
     // Pass the selected object to the new view controller.
 }
 */
-
 @end

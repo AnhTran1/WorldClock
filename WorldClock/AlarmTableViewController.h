@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AlarmObject.h"
+#import "AddAlarmTableViewController.h"
 
 @interface AlarmTableViewController : UITableViewController
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue;
 
 @end

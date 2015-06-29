@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AlarmObject.h"
 
-@interface AddAlarmTableViewController : UITableViewController
-
+@interface AddAlarmTableViewController : UIViewController
+@property AlarmObject *alarmObject;
+@property NSMutableArray *listOfAlarm;
+@property (nonatomic, assign) NSInteger indexOfAlarmToEdit;
 @end

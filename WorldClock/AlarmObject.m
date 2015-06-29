@@ -10,4 +10,15 @@
 
 @implementation AlarmObject
 
+- (void)encodeWithCoder:(NSCoder *)encoder{
+    [encoder encodeObject:self.label forKey:@"label"];
+    [encoder encodeObject:self.timeToSetOff forKey:@"timeToSetOff"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder{
+    self.label = [decoder decodeObjectForKey:@"label"];
+    self.timeToSetOff = [decoder decodeObjectForKey:@"timeToSetOff"];
+    return self;
+}
+
 @end

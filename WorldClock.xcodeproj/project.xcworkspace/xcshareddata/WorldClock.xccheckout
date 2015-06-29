@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7DE19FB0-18E4-4ACA-B8A1-ED9BE34E6439</string>
+	<key>IDESourceControlProjectName</key>
+	<string>WorldClock</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>75B6ECE5914F3EA3430ADEEC2BDF6DCC7AAEA37F</key>
+		<string>https://github.com/AnhTran1/WorldClock.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>WorldClock.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>75B6ECE5914F3EA3430ADEEC2BDF6DCC7AAEA37F</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/AnhTran1/WorldClock.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>75B6ECE5914F3EA3430ADEEC2BDF6DCC7AAEA37F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>75B6ECE5914F3EA3430ADEEC2BDF6DCC7AAEA37F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>WorldClock</string>
+		</dict>
+	</array>
+</dict>
+</plist>

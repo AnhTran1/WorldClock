@@ -7,12 +7,19 @@
 //
 
 #import "AddAlarmTableViewController.h"
+#import "AlarmObject.h"
+#import "AlarmTableViewController.h"
 
 @interface AddAlarmTableViewController ()
+//- (IBAction)saveAlarm:(id)sender;
+@property (strong, nonatomic) IBOutlet UIDatePicker *timeToSetOff;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *saveButton;
+@property (strong, nonatomic) IBOutlet UITextField *label;
 
 @end
 
 @implementation AddAlarmTableViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,12 +29,48 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if (self.editing) {
+        self.navigationItem.title = @"Edit Alarm";
+        AlarmObject *oldAlarmObject = [self.listOfAlarm objectAtIndex:self.indexOfAlarmToEdit];
+        self.timeToSetOff.date = oldAlarmObject.timeToSetOff;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+//
+//- (IBAction)saveAlarm:(id)sender{
+//    AlarmObject * newAlarmObject;
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSData *alarmListData = [defaults objectForKey:@"AlarmListData"];
+//    NSMutableArray *alarmList = [NSKeyedUnarchiver unarchiveObjectWithData:alarmListData];
+//    
+//    if(!alarmList)
+//    {
+//        alarmList = [[NSMutableArray alloc]init];
+//    }
+//
+//    newAlarmObject = [[AlarmObject alloc]init];
+//    newAlarmObject.timeToSetOff = self.timeToSetOff.date;
+//    [self performSegueWithIdentifier:@"AlarmListSegue" sender:self];
+//    NSLog(@"%@" , newAlarmObject.timeToSetOff);
+//
+//    
+//}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if (sender != self.saveButton) return;
+    self.alarmObject = [[AlarmObject alloc]init];
+    self.alarmObject.timeToSetOff = self.timeToSetOff.date;
+    self.alarmObject.label = self.label.text;
+    NSLog(@"%@" , self.alarmObject.timeToSetOff);
+
+
+}
+
 
 #pragma mark - Table view data source
 

@@ -15,6 +15,16 @@
 		18BC5C581B3B9C61004DE5FD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18BC5C571B3B9C61004DE5FD /* Images.xcassets */; };
 		18BC5C5B1B3B9C61004DE5FD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BC5C591B3B9C61004DE5FD /* LaunchScreen.xib */; };
 		18BC5C671B3B9C62004DE5FD /* WorldClockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BC5C661B3B9C62004DE5FD /* WorldClockTests.m */; };
+		18BC5C751B3BA16E004DE5FD /* clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BC5C711B3BA16E004DE5FD /* clock@2x.png */; };
+		18BC5C761B3BA16E004DE5FD /* stopwatch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BC5C721B3BA16E004DE5FD /* stopwatch@2x.png */; };
+		18BC5C771B3BA16E004DE5FD /* alarm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BC5C731B3BA16E004DE5FD /* alarm@2x.png */; };
+		18BC5C781B3BA16E004DE5FD /* worldclock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BC5C741B3BA16E004DE5FD /* worldclock@2x.png */; };
+		18BC5C7B1B3BA5BA004DE5FD /* WorldClockTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BC5C7A1B3BA5BA004DE5FD /* WorldClockTableViewController.m */; };
+		18BC5C7F1B3BA62D004DE5FD /* AlarmTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BC5C7E1B3BA62D004DE5FD /* AlarmTableViewController.m */; };
+		18BC5C811B3BAD2F004DE5FD /* AlarmClock-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18BC5C801B3BAD2F004DE5FD /* AlarmClock-Info.plist */; };
+		18BC5C831B3BAF60004DE5FD /* alarm-clock-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BC5C821B3BAF60004DE5FD /* alarm-clock-icon.png */; };
+		18E8627E1B3CEA8500277E6E /* AlarmObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E8627D1B3CEA8500277E6E /* AlarmObject.m */; };
+		18E862811B3CEC2800277E6E /* AddAlarmTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E862801B3CEC2800277E6E /* AddAlarmTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +53,20 @@
 		18BC5C601B3B9C62004DE5FD /* WorldClockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorldClockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BC5C651B3B9C62004DE5FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18BC5C661B3B9C62004DE5FD /* WorldClockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorldClockTests.m; sourceTree = "<group>"; };
+		18BC5C711B3BA16E004DE5FD /* clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock@2x.png"; sourceTree = "<group>"; };
+		18BC5C721B3BA16E004DE5FD /* stopwatch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stopwatch@2x.png"; sourceTree = "<group>"; };
+		18BC5C731B3BA16E004DE5FD /* alarm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarm@2x.png"; sourceTree = "<group>"; };
+		18BC5C741B3BA16E004DE5FD /* worldclock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "worldclock@2x.png"; sourceTree = "<group>"; };
+		18BC5C791B3BA5BA004DE5FD /* WorldClockTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldClockTableViewController.h; sourceTree = "<group>"; };
+		18BC5C7A1B3BA5BA004DE5FD /* WorldClockTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldClockTableViewController.m; sourceTree = "<group>"; };
+		18BC5C7D1B3BA62D004DE5FD /* AlarmTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmTableViewController.h; sourceTree = "<group>"; };
+		18BC5C7E1B3BA62D004DE5FD /* AlarmTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmTableViewController.m; sourceTree = "<group>"; };
+		18BC5C801B3BAD2F004DE5FD /* AlarmClock-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AlarmClock-Info.plist"; sourceTree = "<group>"; };
+		18BC5C821B3BAF60004DE5FD /* alarm-clock-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarm-clock-icon.png"; sourceTree = "<group>"; };
+		18E8627C1B3CEA8500277E6E /* AlarmObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmObject.h; sourceTree = "<group>"; };
+		18E8627D1B3CEA8500277E6E /* AlarmObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmObject.m; sourceTree = "<group>"; };
+		18E8627F1B3CEC2800277E6E /* AddAlarmTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAlarmTableViewController.h; sourceTree = "<group>"; };
+		18E862801B3CEC2800277E6E /* AddAlarmTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAlarmTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +108,8 @@
 		18BC5C461B3B9C61004DE5FD /* WorldClock */ = {
 			isa = PBXGroup;
 			children = (
+				18BC5C7C1B3BA5D2004DE5FD /* appdata */,
+				18BC5C701B3BA12F004DE5FD /* images */,
 				18BC5C4B1B3B9C61004DE5FD /* AppDelegate.h */,
 				18BC5C4C1B3B9C61004DE5FD /* AppDelegate.m */,
 				18BC5C4E1B3B9C61004DE5FD /* FirstViewController.h */,
@@ -94,6 +120,8 @@
 				18BC5C571B3B9C61004DE5FD /* Images.xcassets */,
 				18BC5C591B3B9C61004DE5FD /* LaunchScreen.xib */,
 				18BC5C471B3B9C61004DE5FD /* Supporting Files */,
+				18E8627C1B3CEA8500277E6E /* AlarmObject.h */,
+				18E8627D1B3CEA8500277E6E /* AlarmObject.m */,
 			);
 			path = WorldClock;
 			sourceTree = "<group>";
@@ -101,6 +129,7 @@
 		18BC5C471B3B9C61004DE5FD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				18BC5C801B3BAD2F004DE5FD /* AlarmClock-Info.plist */,
 				18BC5C481B3B9C61004DE5FD /* Info.plist */,
 				18BC5C491B3B9C61004DE5FD /* main.m */,
 			);
@@ -122,6 +151,31 @@
 				18BC5C651B3B9C62004DE5FD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		18BC5C701B3BA12F004DE5FD /* images */ = {
+			isa = PBXGroup;
+			children = (
+				18BC5C821B3BAF60004DE5FD /* alarm-clock-icon.png */,
+				18BC5C711B3BA16E004DE5FD /* clock@2x.png */,
+				18BC5C721B3BA16E004DE5FD /* stopwatch@2x.png */,
+				18BC5C731B3BA16E004DE5FD /* alarm@2x.png */,
+				18BC5C741B3BA16E004DE5FD /* worldclock@2x.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		18BC5C7C1B3BA5D2004DE5FD /* appdata */ = {
+			isa = PBXGroup;
+			children = (
+				18BC5C791B3BA5BA004DE5FD /* WorldClockTableViewController.h */,
+				18BC5C7A1B3BA5BA004DE5FD /* WorldClockTableViewController.m */,
+				18BC5C7D1B3BA62D004DE5FD /* AlarmTableViewController.h */,
+				18BC5C7E1B3BA62D004DE5FD /* AlarmTableViewController.m */,
+				18E8627F1B3CEC2800277E6E /* AddAlarmTableViewController.h */,
+				18E862801B3CEC2800277E6E /* AddAlarmTableViewController.m */,
+			);
+			name = appdata;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,8 +258,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18BC5C761B3BA16E004DE5FD /* stopwatch@2x.png in Resources */,
+				18BC5C831B3BAF60004DE5FD /* alarm-clock-icon.png in Resources */,
+				18BC5C811B3BAD2F004DE5FD /* AlarmClock-Info.plist in Resources */,
 				18BC5C561B3B9C61004DE5FD /* Main.storyboard in Resources */,
+				18BC5C751B3BA16E004DE5FD /* clock@2x.png in Resources */,
+				18BC5C781B3BA16E004DE5FD /* worldclock@2x.png in Resources */,
 				18BC5C5B1B3B9C61004DE5FD /* LaunchScreen.xib in Resources */,
+				18BC5C771B3BA16E004DE5FD /* alarm@2x.png in Resources */,
 				18BC5C581B3B9C61004DE5FD /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,10 +284,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18BC5C7B1B3BA5BA004DE5FD /* WorldClockTableViewController.m in Sources */,
 				18BC5C531B3B9C61004DE5FD /* SecondViewController.m in Sources */,
 				18BC5C4D1B3B9C61004DE5FD /* AppDelegate.m in Sources */,
+				18BC5C7F1B3BA62D004DE5FD /* AlarmTableViewController.m in Sources */,
 				18BC5C501B3B9C61004DE5FD /* FirstViewController.m in Sources */,
+				18E862811B3CEC2800277E6E /* AddAlarmTableViewController.m in Sources */,
 				18BC5C4A1B3B9C61004DE5FD /* main.m in Sources */,
+				18E8627E1B3CEA8500277E6E /* AlarmObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +486,7 @@
 				18BC5C6C1B3B9C62004DE5FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		18BC5C6D1B3B9C62004DE5FD /* Build configuration list for PBXNativeTarget "WorldClockTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +495,7 @@
 				18BC5C6F1B3B9C62004DE5FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

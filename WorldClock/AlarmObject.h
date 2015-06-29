@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface AlarmObject : NSObject
+@interface AlarmObject : NSObject<NSCoding>
+
+@property (nonatomic,strong) NSString *label;
+@property (nonatomic,strong) NSDate *timeToSetOff;
 
 @end
