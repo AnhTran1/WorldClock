@@ -9,11 +9,12 @@
 #import "AlarmTableViewController.h"
 #import "AlarmObject.h"
 #import "AddAlarmTableViewController.h"
-
+#import "SingleTableViewCell.h"
 @interface AlarmTableViewController ()
 
 - (IBAction)editButton:(id)sender;
-@property NSMutableArray *listOfAlarms;
+@property (strong, nonatomic) IBOutlet UIButton *abc;
+
 
 @end
 
@@ -21,10 +22,15 @@
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue{
     AddAlarmTableViewController *source = [segue sourceViewController];
     AlarmObject *item = source.alarmObject;
-    if (item != nil) {
-        [self.listOfAlarms addObject:item];
-        [self.tableView reloadData];
+    if (source.editing == NO) {
+        if (item != nil) {
+            [self.listOfAlarms addObject:item];
+        }
+
     }
+    NSLog(@"%@",self.listOfAlarms);
+    [self.tableView reloadData];
+
 }
 
 - (void)loadInitialData {
@@ -39,7 +45,12 @@
 //    [self loadInitialData];
 //    NSLog(@"%@",self.listOfAlarms);
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    
+}
 
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated{
+    [super setEditing:editing animated:animated];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,11 +59,13 @@
 }
 
 - (IBAction)editButton:(id)sender{
-    [self setEditing: !self.editing animated:YES];
+    [self setEditing: self.editing animated:YES];
     if ([self.tableView isEditing]) {
         self.editButtonItem.title = @"Done";
+        [self.tableView reloadData];
     }else {
         self.editButtonItem.title = @"Edit";
+        [self.tableView reloadData];
     }
 
 }
@@ -80,24 +93,83 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+
     }
-    
-    cell.textLabel.text = date;
-    cell.detailTextLabel.text = alarmObject.label;
-  
-    
+    UILabel *labelTitle = (UILabel *)[cell viewWithTag:11];
+    [cell addSubview:labelTitle];
+    UILabel *labelSubtitle = (UILabel *)[cell viewWithTag:12];
+    UIButton *deleteButton = (UIButton *)[cell viewWithTag:13];
+    labelTitle.text = date;
+    labelSubtitle.text = alarmObject.label;
+    if ([self.tableView isEditing]) {
+        deleteButton.hidden = NO;
+    }else{
+        deleteButton.hidden = YES;
+    }
+    [deleteButton addTarget:self action:@selector(deleteRow:) forControlEvents:UIControlEventTouchUpInside];
+   
     return cell;
 }
--(void)setEditing:(BOOL)editing animated:(BOOL)animated{
-    [super setEditing:editing animated:animated];
-    if ([self.tableView isEditing]) {
-        self.editButtonItem.title = @"Done";
-    }else {
-        self.editButtonItem.title = @"Edit";
-    }
+
+- (IBAction)deleteRow:(id)sender{
+    NSLog(@"Hello");
+    UITableViewCell *clickcell = (UITableViewCell *)[[sender superview]superview];
+    NSIndexPath *buttonPath = [self.tableView indexPathForCell:clickcell];
+    [self.listOfAlarms removeObjectAtIndex:[buttonPath row]];
+    [self.tableView deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:buttonPath] withRowAnimation:UITableViewRowAnimationTop];
+    [self.tableView reloadData];
 }
+
+
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    NSDateFormatter *dateReader = [[NSDateFormatter alloc]init];
+//    [dateReader setDateFormat:@"hh:mm a"];
+//    AlarmObject *alarmObject = [self.listOfAlarms objectAtIndex:indexPath.row];
+//    NSString *date = [dateReader stringFromDate:alarmObject.timeToSetOff];
+//    
+//    static NSString *CellIdentifier = @"SingleTableViewCell";
+//    SingleTableViewCell *cell = (SingleTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    if(cell == nil)
+//    {
+//        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+//        cell = [nib objectAtIndex:0];
+//    }
+//    
+//    cell.labelTitle.text = date;
+//    cell.labelSubtitle.text = alarmObject.label;
+//    if ([self.tableView isEditing]) {
+//        cell.deleteButton.hidden = NO;
+//    }else{
+//        cell.deleteButton.hidden = YES;
+//    }
+//    
+//    return cell;
+//}
+
+- (void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [(SingleTableViewCell *)[tableView cellForRowAtIndexPath:indexPath] showButtons];
+}
+
+- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [(SingleTableViewCell *)[tableView cellForRowAtIndexPath:indexPath] hiddenButtons];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 62;
+}
+
+//-(void)setEditing:(BOOL)editing animated:(BOOL)animated{
+//    [super setEditing:editing animated:animated];
+//    if ([self.tableView isEditing]) {
+//        self.editButtonItem.title = @"Done";
+//    }else {
+//        self.editButtonItem.title = @"Edit";
+//    }
+//}
 
 
 /*
@@ -137,16 +209,18 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.listOfAlarms removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:indexPath] withRowAnimation:YES];
-        [tableView reloadData];
+        [self.tableView reloadData];
     }
 }
 #pragma mark - UITableView Delegate
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return UITableViewCellEditingStyleDelete;
+//    if (self.tableView.isEditing) {
+//        return UITableViewCellEditingStyleDelete;
+//    }
+    return UITableViewCellEditingStyleNone;
 }
 
-
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self performSegueWithIdentifier:@"EditSergue" sender:self];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -157,6 +231,11 @@
         controller.editing = YES;
     }
 }
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
+}
+
+
 /*
 
 #pragma mark - Navigation

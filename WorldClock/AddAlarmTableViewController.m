@@ -33,6 +33,7 @@
         self.navigationItem.title = @"Edit Alarm";
         AlarmObject *oldAlarmObject = [self.listOfAlarm objectAtIndex:self.indexOfAlarmToEdit];
         self.timeToSetOff.date = oldAlarmObject.timeToSetOff;
+        self.label.text = oldAlarmObject.label;
     }
 }
 
@@ -59,29 +60,36 @@
 //
 //    
 //}
+
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if (sender != self.saveButton) return;
-    self.alarmObject = [[AlarmObject alloc]init];
+    if (self.editing) {
+        self.alarmObject = [self.listOfAlarm objectAtIndex:self.indexOfAlarmToEdit];
+    }else{
+        self.alarmObject = [[AlarmObject alloc]init];
+    }
     self.alarmObject.timeToSetOff = self.timeToSetOff.date;
     self.alarmObject.label = self.label.text;
-    NSLog(@"%@" , self.alarmObject.timeToSetOff);
+    NSLog(@"%@",self.alarmObject);
 
 
 }
+
+
 
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
+
     // Return the number of rows in the section.
     return 0;
 }

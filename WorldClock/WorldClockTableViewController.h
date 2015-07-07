@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ClockObject.h"
+#import "CityTableViewController.h"
 
 @interface WorldClockTableViewController : UITableViewController
-
+@property NSMutableArray *listOfCities;
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue;
+@property ClockObject *clockObject;
 @end

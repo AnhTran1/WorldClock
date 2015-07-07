@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>7DE19FB0-18E4-4ACA-B8A1-ED9BE34E6439</string>
 	<key>IDESourceControlProjectName</key>
-	<string>WorldClock</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>75B6ECE5914F3EA3430ADEEC2BDF6DCC7AAEA37F</key>
 		<string>https://github.com/AnhTran1/WorldClock.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>WorldClock.xcodeproj</string>
+	<string>WorldClock.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>75B6ECE5914F3EA3430ADEEC2BDF6DCC7AAEA37F</key>

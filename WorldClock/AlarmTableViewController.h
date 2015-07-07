@@ -12,5 +12,5 @@
 
 @interface AlarmTableViewController : UITableViewController
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue;
-
+@property NSMutableArray *listOfAlarms;
 @end
